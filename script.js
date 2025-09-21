@@ -9,31 +9,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header');
 
     // Toggle the hamburger menu on click
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
 
     // Handle smooth scrolling and close menu on link click
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+    if (navLinks) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
 
-            if (targetElement) {
-                const headerHeight = header.offsetHeight;
-                window.scrollTo({
-                    top: targetElement.offsetTop - headerHeight,
-                    behavior: 'smooth'
-                });
-            }
+                if (targetElement) {
+                    const headerHeight = header.offsetHeight;
+                    window.scrollTo({
+                        top: targetElement.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                }
 
-            // Close the nav menu on link click (for mobile)
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
+                // Close the nav menu on link click (for mobile)
+                if (nav && hamburger) {
+                    nav.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
         });
-    });
+    }
 
     // --- Intersection Observer for Scroll Animations ---
     const handleIntersection = (entries, observer) => {
