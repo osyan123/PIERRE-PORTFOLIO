@@ -1,23 +1,26 @@
-/* Color Palette & Typography */
+/* General & Typography */
 :root {
     --primary-color: #000000;
-    --secondary-color: #333333;
-    --accent-color: #2c3e50; /* A dark, professional blue */
-    --light-gray: #f7f7f7;
-    --border-color: #e0e0e0;
+    --secondary-color: #ffffff;
+    --accent-color: #3498db;       /* Vibrant Blue */
+    --text-color: #333333;         /* Dark Gray */
+    --light-text: #999999;         /* Soft Gray */
+    --border-color: #d1e5f0;       /* Muted Blue */
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    color: var(--secondary-color);
-    background-color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
     line-height: 1.6;
     margin: 0;
+    overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
 h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     color: var(--primary-color);
+    font-weight: 700;
     line-height: 1.2;
 }
 
@@ -28,7 +31,19 @@ a {
 }
 
 a:hover {
-    color: #1a242f;
+    color: #2980b9; /* Darker blue on hover */
+}
+
+/* Page Load Animations */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Base Layout & Components */
@@ -77,9 +92,10 @@ section {
     color: #ffffff;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
     transform: translateY(-3px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
 }
 
 .btn-secondary {
@@ -88,7 +104,7 @@ section {
     border: 1px solid var(--accent-color);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
     background-color: var(--accent-color);
     color: #ffffff;
     transform: translateY(-3px);
@@ -126,7 +142,7 @@ section {
 
 .nav-link {
     font-weight: 400;
-    color: var(--secondary-color);
+    color: var(--text-color);
     padding: 0.5rem 1.2rem;
     position: relative;
 }
@@ -139,7 +155,7 @@ section {
     align-items: center;
     text-align: center;
     min-height: 80vh;
-    background-color: var(--light-gray);
+    background-color: var(--secondary-color);
     position: relative;
 }
 
@@ -167,7 +183,7 @@ section {
     font-size: 1.1rem;
     max-width: 600px;
     margin: 0 auto 2.5rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .hero-buttons .btn {
@@ -204,7 +220,7 @@ section {
 
 /* Services Section */
 .services-section {
-    background-color: var(--light-gray);
+    background-color: var(--secondary-color);
 }
 
 .services-grid {
@@ -262,7 +278,7 @@ section {
 }
 
 .project-card {
-    background-color: var(--light-gray);
+    background-color: var(--secondary-color);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -308,12 +324,12 @@ section {
 }
 
 .project-btn:hover {
-    background-color: #1a242f;
+    background-color: #2980b9;
 }
 
 /* Contact Section */
 .contact-section {
-    background-color: var(--light-gray);
+    background-color: var(--secondary-color);
     text-align: center;
 }
 
@@ -365,7 +381,7 @@ section {
 
 .social-icons a {
     font-size: 1.5rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
     transition: color 0.3s ease;
 }
 
@@ -443,7 +459,7 @@ section {
     font-size: 1.1rem; /* Slightly larger font for readability */
     line-height: 1.8; /* Increased line height */
     margin-bottom: 2.5rem; /* Space before the button */
-    color: var(--secondary-color); /* Ensure text color is consistent */
+    color: var(--text-color); /* Ensure text color is consistent */
 }
 
 /* Styling for the CV button in the About Me section */
@@ -461,8 +477,45 @@ section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.about-cv-btn:hover {
-    background-color: #1a242f; /* Darker accent on hover */
+.about-cv-btn:hover, .about-cv-btn:active, .about-cv-btn:focus {
+    background-color: #2980b9; /* Darker blue on hover */
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Base style for elements to be animated */
+.fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    will-change: opacity, transform;
+}
+
+/* This class triggers the animation when the element is in view */
+.fade-in-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-btn:hover, .project-btn:active, .project-btn:focus {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+.contact-send-btn:hover, .contact-send-btn:active, .contact-send-btn:focus {
+    background-color: #2980b9;
+    color: #ffffff;
 }
